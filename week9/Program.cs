@@ -102,10 +102,12 @@ namespace ISM6225_Spring_2024_Assignment_2
             try
             {
                 // Write your code here and you can modify the return value according to the requirements
+                // Using a list to track unique elements.
                 List<int> arr = new List<int>();
                 int i;
                 for (i = 0; i < nums.Length; i++)
                 {
+                    // If the current element is not already in arr, add it to arr. This ensures uniqueness.
                     if (!arr.Contains(nums[i]))
                     {
                         arr.Add(nums[i]);
@@ -144,16 +146,23 @@ namespace ISM6225_Spring_2024_Assignment_2
 
         public static IList<int> MoveZeroes(int[] nums)
         {
+            // Initialize a new list to store the result and a counter for zeros.
             List<int> arr = new List<int>(); int i, c = 0;
             try
             {
                 // Write your code here and you can modify the return value according to the requirements
+                // Loop through each element in the input array.
                 for (i = 0; i < nums.Length; i++)
                 {
+                    // If the current element is not zero, add it to the result list.
                     if (nums[i] != 0)
                     { arr.Add(nums[i]); }
-                    else { c += 1; }
-                }
+                    else {
+                        // If it's a zero, increment the zero counter.
+                        c += 1; 
+                    }
+                    }
+                // After processing non-zero elements, append zeros to the end of the list as many times as the counter indicates.
                 arr.AddRange(Enumerable.Repeat(0, c));
 
                 return arr;
@@ -204,29 +213,33 @@ namespace ISM6225_Spring_2024_Assignment_2
 
         public static IList<IList<int>> ThreeSum(int[] nums)
         {
+            // Initialize a list to hold the list of triplets that sum up to zero.
             IList<IList<int>> result = new List<IList<int>>();
             try
             {
-                // Write your code here and you can modify the return value according to the requirements
+                // First, sort the array to facilitate the use of two-pointer technique.
                 Array.Sort(nums); // Sort the array
 
+                // Iterate through the array, using each number as a potential first element of a triplet.
                 for (int i = 0; i < nums.Length - 2; i++)
                 {
                     if (i > 0 && nums[i] == nums[i - 1]) // Skip duplicates
                         continue;
-
-                    int l = i + 1;
-                    int r = nums.Length - 1;
+                    //Use two pointers to explore potential second and third elements.
+                    int l = i + 1;//left pointer
+                    int r = nums.Length - 1;// right pointer
 
                     while (l < r)
                     {
                         int sum = nums[i] + nums[l] + nums[r];
                         if (sum == 0)
                         {
+                            // If the sum is zero, add the triplet to the result.
                             result.Add(new List<int> { nums[i], nums[l], nums[r] });
-                            // Skip duplicates
+                            // Move the left pointer forward to avoid duplicates.
                             while (l < r && nums[l] == nums[l + 1])
                                 l++;
+                            // Move the right pointer backward to avoid duplicates.
                             while (l < r && nums[r] == nums[r - 1])
                                 r--;
                             l++;
@@ -234,10 +247,12 @@ namespace ISM6225_Spring_2024_Assignment_2
                         }
                         else if (sum < 0)
                         {
+                            // If the sum is less than zero, move the left pointer to increase the sum.
                             l++;
                         }
                         else
                         {
+                            // If the sum is more than zero, move the right pointer to decrease the sum.
                             r--;
                         }
                     }
@@ -279,10 +294,13 @@ public static int FindMaxConsecutiveOnes(int[] nums)
     try
     {
                 // Write your code here and you can modify the return value according to the requirements
+                // Iterate through each element in the array.
                 for (i = 0; i < nums.Length - 2; i++)
                 {
+                    // If the current element and next element is 1, increment count.
                     if (nums[i] == 1 && nums[i + 1] == 1)
                     {
+                        // If next element is also 1, increment count.
                         if (nums[i + 1] == 1) { c = 3; }
                         else { c = 2; }
                     }
@@ -322,19 +340,28 @@ Constraints:
 
 public static int BinaryToDecimal(int binary)
 {
+            // Initialize variables:
+            // di represents the base value (2^i) for the current binary digit.
+            // d will accumulate the decimal equivalent of the binary number.
             int di = 1, i = 0,d=0;
     try
     {
-        // Write your code here and you can modify the return value according to the requirements
-        while (binary > 0)
+                // Write your code here and you can modify the return value according to the requirements
+                // Continue the loop until the binary number is reduced to 0.
+                while (binary > 0)
                 {
-                    int j=binary%10;
-                    d+= di*j;
+                    // Extract the least significant digit (either 0 or 1).
+                    int j =binary%10;
+                    // Add to the decimal value: multiply the digit by its base value and add to d.
+                    d += di*j;
+                    // Prepare di for the next binary digit: multiply by 2 (since it's binary base).
                     di *= 2;
-                    binary=binary  / 10;
+                    // Remove the processed digit from binary.
+                    binary = binary  / 10;
 
                 }
-        return d;
+                // Return the calculated decimal value.
+                return d;
     }
     catch (Exception)
     {
@@ -370,21 +397,25 @@ Constraints:
 public static int MaximumGap(int[] nums)
 {
             int i, d = 0,j=nums.Length;
-    Array.Sort(nums);
+            // Sort the array to ensure that all consecutive differences are positive.
+            Array.Sort(nums);
     try
             {
-                if(nums.Length < 2) {  return 0; }  
-                // Write your code here and you can modify the return value according to the requirements
+                // If the array has less than two elements, return 0 since there's no gap to calculate.
+                if (nums.Length < 2) {  return 0; }
+                // Iterate through the array, comparing each pair of consecutive elements.
                 for (i = 0; i < j - 1; i++)
                 {
+                    // Calculate the gap between the current element and the next.
                     if (d<(nums[i + 1] - nums[i]))
                     {
+                        // Update maxGap if the current gap is larger than any previously found.
                         d = nums[i + 1] - nums[i];
                         
                     }
                 }
-        
-    return d;
+                // Return the largest gap found.
+                return d;
     }
     catch (Exception)
     {
@@ -423,18 +454,22 @@ public static int LargestPerimeter(int[] nums)
 {
     try
     {
+                // Sort the array to ensure we can easily check the triangle inequality theorem
                 Array.Sort(nums);   
                 int i,p=0;
+                // Iterate from the end of the sorted array to find the largest possible perimeter.
                 for (i = 0; i < nums.Length - 2; i++) {
+                    // Check if the current triplet satisfies the triangle inequality theorem.
                     if (nums[i+2]<(nums[i] + nums[i + 1])) 
                     {
+                        // If so, we've found the largest possible perimeter, return it.
                         p = nums[i] + nums[i + 1] + nums[i + 2];
                             }
                 
                 }
 
-        // Write your code here and you can modify the return value according to the requirements
-        return p;
+                // If no valid triangle can be formed, return 0.
+                return p;
     }
     catch (Exception)
     {
@@ -487,11 +522,15 @@ public static string RemoveOccurrences(string s, string part)
 {
     try
     {
+                // Initialize the index to store the position of 'part' in 's'.
                 int index;
+                // Continue looping as long as 'part' is found within 's'.
                 while ((index = s.IndexOf(part)) != -1)
                 {
+                    // If 'part' is found, remove it from 's' starting from its index.
                     s = s.Remove(index, part.Length);
                 }
+                // Return the modified string after all occurrences of 'part' have been removed.
                 return s;
             }
     catch (Exception)

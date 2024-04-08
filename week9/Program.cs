@@ -157,11 +157,12 @@ namespace ISM6225_Spring_2024_Assignment_2
                     // If the current element is not zero, add it to the result list.
                     if (nums[i] != 0)
                     { arr.Add(nums[i]); }
-                    else {
+                    else
+                    {
                         // If it's a zero, increment the zero counter.
-                        c += 1; 
+                        c += 1;
                     }
-                    }
+                }
                 // After processing non-zero elements, append zeros to the end of the list as many times as the counter indicates.
                 arr.AddRange(Enumerable.Repeat(0, c));
 
@@ -264,35 +265,35 @@ namespace ISM6225_Spring_2024_Assignment_2
             {
                 throw;
             }
-}
+        }
 
-/*
+        /*
 
-Question 4:
-Given a binary array nums, return the maximum number of consecutive 1's in the array.
+        Question 4:
+        Given a binary array nums, return the maximum number of consecutive 1's in the array.
 
-Example 1:
+        Example 1:
 
-Input: nums = [1,1,0,1,1,1]
-Output: 3
-Explanation: The first two digits or the last three digits are consecutive 1s. The maximum number of consecutive 1s is 3.
-Example 2:
+        Input: nums = [1,1,0,1,1,1]
+        Output: 3
+        Explanation: The first two digits or the last three digits are consecutive 1s. The maximum number of consecutive 1s is 3.
+        Example 2:
 
-Input: nums = [1,0,1,1,0,1]
-Output: 2
+        Input: nums = [1,0,1,1,0,1]
+        Output: 2
 
-Constraints:
+        Constraints:
 
-1 <= nums.length <= 105
-nums[i] is either 0 or 1.
+        1 <= nums.length <= 105
+        nums[i] is either 0 or 1.
 
-*/
+        */
 
-public static int FindMaxConsecutiveOnes(int[] nums)
-{
-            int c=0,i,j=0;
-    try
-    {
+        public static int FindMaxConsecutiveOnes(int[] nums)
+        {
+            int c = 0, i, j = 0;
+            try
+            {
                 // Write your code here and you can modify the return value according to the requirements
                 // Iterate through each element in the array.
                 for (i = 0; i < nums.Length - 2; i++)
@@ -305,223 +306,224 @@ public static int FindMaxConsecutiveOnes(int[] nums)
                         else { c = 2; }
                     }
                 }
-        
-        return c;
 
-    }
-    catch (Exception)
-    {
-        throw;
-    }
-}
+                return c;
 
-/*
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-Question 5:
-You are tasked with writing a program that converts a binary number to its equivalent decimal representation without using bitwise operators or the `Math.Pow` function. You will implement a function called `BinaryToDecimal` which takes an integer representing a binary number as input and returns its decimal equivalent. 
+        /*
 
-Requirements:
-1. Your program should prompt the user to input a binary number as an integer. 
-2. Implement the `BinaryToDecimal` function, which takes the binary number as input and returns its decimal equivalent. 
-3. Avoid using bitwise operators (`<<`, `>>`, `&`, `|`, `^`) and the `Math.Pow` function for any calculations. 
-4. Use only basic arithmetic operations such as addition, subtraction, multiplication, and division. 
-5. Ensure the program displays the input binary number and its corresponding decimal value.
+        Question 5:
+        You are tasked with writing a program that converts a binary number to its equivalent decimal representation without using bitwise operators or the `Math.Pow` function. You will implement a function called `BinaryToDecimal` which takes an integer representing a binary number as input and returns its decimal equivalent. 
 
-Example 1:
-Input: num = 101010
-Output: 42
+        Requirements:
+        1. Your program should prompt the user to input a binary number as an integer. 
+        2. Implement the `BinaryToDecimal` function, which takes the binary number as input and returns its decimal equivalent. 
+        3. Avoid using bitwise operators (`<<`, `>>`, `&`, `|`, `^`) and the `Math.Pow` function for any calculations. 
+        4. Use only basic arithmetic operations such as addition, subtraction, multiplication, and division. 
+        5. Ensure the program displays the input binary number and its corresponding decimal value.
+
+        Example 1:
+        Input: num = 101010
+        Output: 42
 
 
-Constraints:
+        Constraints:
 
-1 <= num <= 10^9
+        1 <= num <= 10^9
 
-*/
+        */
 
-public static int BinaryToDecimal(int binary)
-{
+        public static int BinaryToDecimal(int binary)
+        {
             // Initialize variables:
             // di represents the base value (2^i) for the current binary digit.
             // d will accumulate the decimal equivalent of the binary number.
-            int di = 1, i = 0,d=0;
-    try
-    {
+            int di = 1, i = 0, d = 0;
+            try
+            {
                 // Write your code here and you can modify the return value according to the requirements
                 // Continue the loop until the binary number is reduced to 0.
                 while (binary > 0)
                 {
                     // Extract the least significant digit (either 0 or 1).
-                    int j =binary%10;
+                    int j = binary % 10;
                     // Add to the decimal value: multiply the digit by its base value and add to d.
-                    d += di*j;
+                    d += di * j;
                     // Prepare di for the next binary digit: multiply by 2 (since it's binary base).
                     di *= 2;
                     // Remove the processed digit from binary.
-                    binary = binary  / 10;
+                    binary = binary / 10;
 
                 }
                 // Return the calculated decimal value.
                 return d;
-    }
-    catch (Exception)
-    {
-        throw;
-    }
-}
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-/*
+        /*
 
-Question:6
-Given an integer array nums, return the maximum difference between two successive elements in its sorted form. If the array contains less than two elements, return 0.
-You must write an algorithm that runs in linear time and uses linear extra space.
+        Question:6
+        Given an integer array nums, return the maximum difference between two successive elements in its sorted form. If the array contains less than two elements, return 0.
+        You must write an algorithm that runs in linear time and uses linear extra space.
 
-Example 1:
+        Example 1:
 
-Input: nums = [3,6,9,1]
-Output: 3
-Explanation: The sorted form of the array is [1,3,6,9], either (3,6) or (6,9) has the maximum difference 3.
-Example 2:
+        Input: nums = [3,6,9,1]
+        Output: 3
+        Explanation: The sorted form of the array is [1,3,6,9], either (3,6) or (6,9) has the maximum difference 3.
+        Example 2:
 
-Input: nums = [10]
-Output: 0
-Explanation: The array contains less than 2 elements, therefore return 0.
+        Input: nums = [10]
+        Output: 0
+        Explanation: The array contains less than 2 elements, therefore return 0.
 
 
-Constraints:
+        Constraints:
 
-1 <= nums.length <= 105
-0 <= nums[i] <= 109
+        1 <= nums.length <= 105
+        0 <= nums[i] <= 109
 
-*/
+        */
 
-public static int MaximumGap(int[] nums)
-{
-            int i, d = 0,j=nums.Length;
+        public static int MaximumGap(int[] nums)
+        {
+            int i, d = 0, j = nums.Length;
             // Sort the array to ensure that all consecutive differences are positive.
             Array.Sort(nums);
-    try
+            try
             {
                 // If the array has less than two elements, return 0 since there's no gap to calculate.
-                if (nums.Length < 2) {  return 0; }
+                if (nums.Length < 2) { return 0; }
                 // Iterate through the array, comparing each pair of consecutive elements.
                 for (i = 0; i < j - 1; i++)
                 {
                     // Calculate the gap between the current element and the next.
-                    if (d<(nums[i + 1] - nums[i]))
+                    if (d < (nums[i + 1] - nums[i]))
                     {
                         // Update maxGap if the current gap is larger than any previously found.
                         d = nums[i + 1] - nums[i];
-                        
+
                     }
                 }
                 // Return the largest gap found.
                 return d;
-    }
-    catch (Exception)
-    {
-        throw;
-    }
-}
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-/*
+        /*
 
-Question:7
-Given an integer array nums, return the largest perimeter of a triangle with a non-zero area, formed from three of these lengths. If it is impossible to form any triangle of a non-zero area, return 0.
+        Question:7
+        Given an integer array nums, return the largest perimeter of a triangle with a non-zero area, formed from three of these lengths. If it is impossible to form any triangle of a non-zero area, return 0.
 
-Example 1:
+        Example 1:
 
-Input: nums = [2,1,2]
-Output: 5
-Explanation: You can form a triangle with three side lengths: 1, 2, and 2.
-Example 2:
+        Input: nums = [2,1,2]
+        Output: 5
+        Explanation: You can form a triangle with three side lengths: 1, 2, and 2.
+        Example 2:
 
-Input: nums = [1,2,1,10]
-Output: 0
-Explanation: 
-You cannot use the side lengths 1, 1, and 2 to form a triangle.
-You cannot use the side lengths 1, 1, and 10 to form a triangle.
-You cannot use the side lengths 1, 2, and 10 to form a triangle.
-As we cannot use any three side lengths to form a triangle of non-zero area, we return 0.
+        Input: nums = [1,2,1,10]
+        Output: 0
+        Explanation: 
+        You cannot use the side lengths 1, 1, and 2 to form a triangle.
+        You cannot use the side lengths 1, 1, and 10 to form a triangle.
+        You cannot use the side lengths 1, 2, and 10 to form a triangle.
+        As we cannot use any three side lengths to form a triangle of non-zero area, we return 0.
 
-Constraints:
+        Constraints:
 
-3 <= nums.length <= 104
-1 <= nums[i] <= 106
+        3 <= nums.length <= 104
+        1 <= nums[i] <= 106
 
-*/
+        */
 
-public static int LargestPerimeter(int[] nums)
-{
-    try
-    {
+        public static int LargestPerimeter(int[] nums)
+        {
+            try
+            {
                 // Sort the array to ensure we can easily check the triangle inequality theorem
-                Array.Sort(nums);   
-                int i,p=0;
+                Array.Sort(nums);
+                int i, p = 0;
                 // Iterate from the end of the sorted array to find the largest possible perimeter.
-                for (i = 0; i < nums.Length - 2; i++) {
+                for (i = 0; i < nums.Length - 2; i++)
+                {
                     // Check if the current triplet satisfies the triangle inequality theorem.
-                    if (nums[i+2]<(nums[i] + nums[i + 1])) 
+                    if (nums[i + 2] < (nums[i] + nums[i + 1]))
                     {
                         // If so, we've found the largest possible perimeter, return it.
                         p = nums[i] + nums[i + 1] + nums[i + 2];
-                            }
-                
+                    }
+
                 }
 
                 // If no valid triangle can be formed, return 0.
                 return p;
-    }
-    catch (Exception)
-    {
-        throw;
-    }
-}
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-/*
+        /*
 
-Question:8
+        Question:8
 
-Given two strings s and part, perform the following operation on s until all occurrences of the substring part are removed:
+        Given two strings s and part, perform the following operation on s until all occurrences of the substring part are removed:
 
-Find the leftmost occurrence of the substring part and remove it from s.
-Return s after removing all occurrences of part.
+        Find the leftmost occurrence of the substring part and remove it from s.
+        Return s after removing all occurrences of part.
 
-A substring is a contiguous sequence of characters in a string.
+        A substring is a contiguous sequence of characters in a string.
 
 
 
-Example 1:
+        Example 1:
 
-Input: s = "daabcbaabcbc", part = "abc"
-Output: "dab"
-Explanation: The following operations are done:
-- s = "daabcbaabcbc", remove "abc" starting at index 2, so s = "dabaabcbc".
-- s = "dabaabcbc", remove "abc" starting at index 4, so s = "dababc".
-- s = "dababc", remove "abc" starting at index 3, so s = "dab".
-Now s has no occurrences of "abc".
-Example 2:
+        Input: s = "daabcbaabcbc", part = "abc"
+        Output: "dab"
+        Explanation: The following operations are done:
+        - s = "daabcbaabcbc", remove "abc" starting at index 2, so s = "dabaabcbc".
+        - s = "dabaabcbc", remove "abc" starting at index 4, so s = "dababc".
+        - s = "dababc", remove "abc" starting at index 3, so s = "dab".
+        Now s has no occurrences of "abc".
+        Example 2:
 
-Input: s = "axxxxyyyyb", part = "xy"
-Output: "ab"
-Explanation: The following operations are done:
-- s = "axxxxyyyyb", remove "xy" starting at index 4 so s = "axxxyyyb".
-- s = "axxxyyyb", remove "xy" starting at index 3 so s = "axxyyb".
-- s = "axxyyb", remove "xy" starting at index 2 so s = "axyb".
-- s = "axyb", remove "xy" starting at index 1 so s = "ab".
-Now s has no occurrences of "xy".
+        Input: s = "axxxxyyyyb", part = "xy"
+        Output: "ab"
+        Explanation: The following operations are done:
+        - s = "axxxxyyyyb", remove "xy" starting at index 4 so s = "axxxyyyb".
+        - s = "axxxyyyb", remove "xy" starting at index 3 so s = "axxyyb".
+        - s = "axxyyb", remove "xy" starting at index 2 so s = "axyb".
+        - s = "axyb", remove "xy" starting at index 1 so s = "ab".
+        Now s has no occurrences of "xy".
 
-Constraints:
+        Constraints:
 
-1 <= s.length <= 1000
-1 <= part.length <= 1000
-s​​​​​​ and part consists of lowercase English letters.
+        1 <= s.length <= 1000
+        1 <= part.length <= 1000
+        s​​​​​​ and part consists of lowercase English letters.
 
-*/
+        */
 
-public static string RemoveOccurrences(string s, string part)
-{
-    try
-    {
+        public static string RemoveOccurrences(string s, string part)
+        {
+            try
+            {
                 // Initialize the index to store the position of 'part' in 's'.
                 int index;
                 // Continue looping as long as 'part' is found within 's'.
@@ -533,51 +535,66 @@ public static string RemoveOccurrences(string s, string part)
                 // Return the modified string after all occurrences of 'part' have been removed.
                 return s;
             }
-    catch (Exception)
-    {
-        throw;
-    }
-}
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-/* Inbuilt Functions - Don't Change the below functions */
-static string ConvertIListToNestedList(IList<IList<int>> input)
-{
-    StringBuilder sb = new StringBuilder();
-
-    sb.Append("["); // Add the opening square bracket for the outer list
-
-    for (int i = 0; i < input.Count; i++)
-    {
-        IList<int> innerList = input[i];
-        sb.Append("[" + string.Join(",", innerList) + "]");
-
-        // Add a comma unless it's the last inner list
-        if (i < input.Count - 1)
+        /* Inbuilt Functions - Don't Change the below functions */
+        static string ConvertIListToNestedList(IList<IList<int>> input)
         {
-            sb.Append(",");
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("["); // Add the opening square bracket for the outer list
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                IList<int> innerList = input[i];
+                sb.Append("[" + string.Join(",", innerList) + "]");
+
+                // Add a comma unless it's the last inner list
+                if (i < input.Count - 1)
+                {
+                    sb.Append(",");
+                }
+            }
+
+            sb.Append("]"); // Add the closing square bracket for the outer list
+
+            return sb.ToString();
+        }
+
+
+        static string ConvertIListToArray(IList<int> input)
+        {
+            // Create an array to hold the strings in input
+            string[] strArray = new string[input.Count];
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                strArray[i] = "" + input[i] + ""; // Enclose each string in double quotes
+            }
+
+            // Join the strings in strArray with commas and enclose them in square brackets
+            string result = "[" + string.Join(",", strArray) + "]";
+
+            return result;
         }
     }
-
-    sb.Append("]"); // Add the closing square bracket for the outer list
-
-    return sb.ToString();
 }
 
+/*
 
-static string ConvertIListToArray(IList<int> input)
-{
-    // Create an array to hold the strings in input
-    string[] strArray = new string[input.Count];
+    Self Actulization:
 
-    for (int i = 0; i < input.Count; i++)
-    {
-        strArray[i] = "" + input[i] + ""; // Enclose each string in double quotes
-    }
-
-    // Join the strings in strArray with commas and enclose them in square brackets
-    string result = "[" + string.Join(",", strArray) + "]";
-
-    return result;
-}
-    }
-}
+    1.while finding the answer for this problem i learned about the "contains" method which can easily able to check whether the number is already exist or not the previous array
+    2.while finding the answer for this problem i learned about the "Enumberable" method which can add n number of digits from end of the list.
+    3.while answering this question i finded about accessing the elements from left to right and handiling the out of range error exception 
+    4.
+    5.for this question my intial thougth was how can we do without bitwise and math.pow so i brushed up basics and devloped the logic using the 1,2,4,8,16,32 with places
+    6.for this question i just traversed thourgh the array and calcutated the differene if it's max then overwrite the previous one
+    7.used the basic formula the thirdside should less than the sum of other two sides
+    8.learned about the inbulit functions indexof which returns index value of the string where the substring is and used the remove to remove the element from the existing did this until it gives -1 which means there is no posibility of the substruing exists in the main string
+ 
+ */
